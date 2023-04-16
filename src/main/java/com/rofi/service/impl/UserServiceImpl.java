@@ -8,21 +8,34 @@ import com.rofi.UserRepository;
 import com.rofi.io.entity.UserEntity;
 import com.rofi.service.UserService;
 import com.rofi.shared.dto.UserDto;
+import com.rofi.shared.dto.UserUtils;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserUtils utils;
+	
 	@Override
 	public UserDto createUser(UserDto user) {
+		
+		
+//		UserEntity storedUserDetails = userRepository.findByEmail(user.getEmail());
+		
+		if(userRepository.findByEmail(user.getEmail()) != null) throw new RuntimeException("Record already exist");
+		
 		UserEntity userEntity = new UserEntity();
 		BeanUtils.copyProperties(user, userEntity);
 		
+		String publicUserId = utils.generatedUserId(21);
+		
+		
+		userEntity.setUserId(publicUserId);
 		userEntity.setEncryptedPassword("test");
-		userEntity.setUserId("testuserId");
 		
 		UserEntity storedUserDetails =  userRepository.save(userEntity);
 		
