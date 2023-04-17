@@ -15,7 +15,6 @@ import com.rofi.shared.dto.UserDto;
 import com.rofi.ui.model.request.UserDetailRequestModel;
 import com.rofi.ui.model.response.UserRest;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @RestController
 @RequestMapping("users") //http://localhost:8080/users
