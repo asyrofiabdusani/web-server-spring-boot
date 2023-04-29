@@ -1,0 +1,30 @@
+Additional Notes
+
+
+Steps
+1. create entity -> contains all of columns name in the database.
+adding anotation @Entity for the class
+adding anotation @id for id and @GeneratedValue to activate auto increment
+adding anotation @Column for every variable
+important : the name of every variable must same with the name of column in table in the database. If the name of column contains underscores, the name of variable must be camel case
+
+2. create interface repository -> only needs to extends pageandsortingrepository
+adding anotation @Repository for the class
+
+3. create dto -> contains all of columns name in the database. This will be used to convert the output
+
+4. create interface service -> this will be used to determine all of function which are needed in the service
+
+5. create service implementation -> this class implements interface service. In this class, we will declare all of methods which have been declare in the service interface.
+
+6. create controller -> this will be used to determine all of routings.
+if we want to giving searching with some params, we can use anotation @Requestparam, and @defaultvalue as parameter in the method
+
+7. create exception -> to catch the error
+
+additional file for post
+1. create RequestModel -> contain variables which catch all of input from user.
+
+2. Create ErrorMessages -> as rules for the requestModels
+
+3. Create UserUtils in the DTO -> generate random characters
